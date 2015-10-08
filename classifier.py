@@ -19,7 +19,7 @@ a = a.reshape(64,64)
 
 angleToOffsetStartAndOffsetEnd = {}
 alphaList = []
-numRot = 8
+numRot = 16
 unitRot = 360.0/numRot
 
 for mult_alpha in range(numRot):
