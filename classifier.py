@@ -128,6 +128,7 @@ def keep_dim(layers):
 class Classifier(BaseEstimator):
  
     def __init__(self):
+        self.crop_value = 5
         self.net = make_pipeline(
             #GoogleNet(aggregate_function=keep_dim, layer_names=["input"]),
             build_model()
@@ -141,6 +142,7 @@ class Classifier(BaseEstimator):
     def preprocess(self, X, transpose=True):
         X = (X / 255.)
         X = X.astype(np.float32)
+        X = X[:, self.crop_value:64-self.crop_value, self.crop_value:64-self.crop_value, :]
         if transpose:
             X = X.transpose((0, 3, 1, 2))
         return X
